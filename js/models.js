@@ -24,8 +24,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    return new URL(this.url).host;
   }
 }
 
@@ -202,5 +201,29 @@ class User {
       console.error("loginViaStoredCredentials failed", err);
       return null;
     }
+  }
+
+  async addFav(story) {
+    this.favorites.push(story);
+    await this.addRemoveFav("add", story)
+  }
+
+  async removeFav(story) {
+    this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
+    await this.addRemoveFav("remove", story);
+  }
+
+  async addRemoveFav(newState, story) {
+    const method = newState === "add" ? "POST" : "DELETE";
+    const token = this.loginToken;
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
+      method: method,
+      data: { token },
+    });
+  }
+
+  isFav(story) {
+    return this.favorites.some(s => (s.storyId === story.storyId));
   }
 }
