@@ -8,6 +8,23 @@
   color: gray;
   font-size: 0.8rem;
   margin: 10px 0;
+  border-bottom: 1px solid lightgray;
+}
+
+.li-containing-div {
+  display: flex;
+  column-gap: 20px;
+}
+
+.li-card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.li-card div {
+  margin-bottom: 10px;
 }
 
 #stories-loading-msg {
@@ -16,6 +33,19 @@
   margin: 20px 30px;
 }
 
+#all-stories-list .star,
+#favorite-stories-list .star {
+  margin-left: 10px;
+}
+
+.trash-can {
+  margin-left: 10px;
+}
+
+.star,
+.trash-can {
+  cursor: pointer;
+}
 
 /* Individual stories */
 
@@ -31,9 +61,14 @@
 }
 
 .story-author {
-  margin-left: 2em;
+  color: green;
 }
 
 .story-user {
   display: block;
+  color: orange;
+}
+
+small {
+  margin-bottom: 10px;
 }

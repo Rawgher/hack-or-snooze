@@ -5,15 +5,19 @@
 const $body = $("body");
 
 const $storiesLoadingMsg = $("#stories-loading-msg");
+
+// grabbing all of the lists
 const $allStoriesList = $("#all-stories-list");
 const $favoritedStories = $("#favorite-stories-list")
 const $myStories = $("#my-stories-list");
 const $storiesList = $(".stories-list");
 
+// grabbing all the forms
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
 const $storyForm = $("#story-form");
 
+// grabbing relevant divs to access later
 const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");

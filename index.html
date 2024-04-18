@@ -36,11 +36,7 @@
       <div class="navbar-brand">
         <a class="nav-link" href="#" id="nav-all">Hack or Snooze</a>
       </div>
-      <div
-        class="main-nav-links hidden"
-        wfd-invisible="true"
-        style="display: block"
-      >
+      <div class="main-nav-links hidden">
         |
         <a class="nav-link" href="#" id="nav-submit-story">submit</a>
         |
@@ -55,23 +51,30 @@
       </div>
     </nav>
 
-    <!-- New Story form -->
-    <form action="#" id="story-form" class="account-form hidden" method="post">
-      <h4>Create Account</h4>
-      <div class="login-input">
-        <label for="form-title">title</label>
-        <input id="form-title" autocapitalize="words" />
-      </div>
-      <div class="login-input">
-        <label for="form-author">author</label>
-        <input id="form-author" />
-      </div>
-      <div class="login-input">
-        <label for="form-url">url</label>
-        <input id="form-url" autocomplete="new-password" type="url" />
-      </div>
-      <button type="submit">submit</button>
-    </form>
+    <section class="stories-container container">
+      <!-- New Story form -->
+      <form
+        action="#"
+        id="story-form"
+        class="account-form hidden"
+        method="post"
+      >
+        <h4>Create Account</h4>
+        <div class="login-input">
+          <label for="form-title">title</label>
+          <input id="form-title" autocapitalize="words" />
+        </div>
+        <div class="login-input">
+          <label for="form-author">author</label>
+          <input id="form-author" />
+        </div>
+        <div class="login-input">
+          <label for="form-url">url</label>
+          <input id="form-url" autocomplete="new-password" type="url" />
+        </div>
+        <button type="submit">submit</button>
+      </form>
+    </section>
 
     <!-- area for stories (all stories, user stories, favorites) -->
     <section class="stories-container container">

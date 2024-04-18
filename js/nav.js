@@ -35,7 +35,7 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-/** Show submit form on click on "submit" */
+// Show submit form on click on "submit"
 
 function navSubmitClick(evt) {
   console.debug("navSubmitClick", evt);
@@ -47,6 +47,8 @@ function navSubmitClick(evt) {
 
 $navSubmitStory.on("click", navSubmitClick);
 
+// Shows the favorite page when clicked
+
 function navFavoritesClick(evt) {
   console.debug("navFavoritesClick", evt);
   hidePageComponents();
@@ -54,6 +56,8 @@ function navFavoritesClick(evt) {
 }
 
 $navFavorites.on("click", navFavoritesClick);
+
+// Shows the user's stories page when clicked
 
 function navMyStories(evt) {
   console.debug("navMyStories", evt);

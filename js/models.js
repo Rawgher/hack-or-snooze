@@ -73,6 +73,8 @@ class StoryList {
    */
 
   async addStory(user, {title, author, url}) {
+
+    // grabbing the user token to pass to the api along with the relevant information
     const token = user.loginToken;
     const response = await axios({
       url: `${BASE_URL}/stories`,
@@ -81,19 +83,25 @@ class StoryList {
     });
 
     const story = new Story(response.data.story);
+
+    // adds stories to the top of the users array
     this.stories.unshift(story);
     user.ownStories.unshift(story);
     return story;
   }
 
+  // deleting a story made by the user
   async removeStory(user, storyId) {
     const token = user.loginToken;
+
+    // passing information about the story to be deleted while confirming the user is valid
     await axios({
       url: `${BASE_URL}/stories/${storyId}`,
       method: "DELETE",
       data: { token: user.loginToken }
     });
 
+    // rerender the pages after a story has been deleted
     this.stories = this.stories.filter(story => story.storyId !== storyId);
     user.favorites = user.favorites.filter(s => s.storyId !== storyId);
     user.ownStories = user.ownStories.filter(s => s.storyId !== storyId);
@@ -216,19 +224,27 @@ class User {
     }
   }
 
+  // function to add favorites
   async addFav(story) {
     this.favorites.push(story);
+    // passes the story and method of adding to the addRemoveFav function
     await this.addRemoveFav("add", story)
   }
 
+  // function to remove favorites
   async removeFav(story) {
     this.favorites = this.favorites.filter(s => s.storyId !== story.storyId);
+    // passes the story and method of removing to the addRemoveFav function
     await this.addRemoveFav("remove", story);
   }
 
+  // handler for the functions above
   async addRemoveFav(newState, story) {
+    // tells the api what method to run
     const method = newState === "add" ? "POST" : "DELETE";
     const token = this.loginToken;
+
+    // passes the story to be favorited, remove its favorite or delete the story
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${story.storyId}`,
       method: method,
@@ -236,6 +252,7 @@ class User {
     });
   }
 
+  // confirms if a story is on the users favorite list
   isFav(story) {
     return this.favorites.some(s => (s.storyId === story.storyId));
   }
